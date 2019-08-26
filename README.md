@@ -1,3 +1,52 @@
+# My Notes on Grover
+
+## Install
+```
+conda create -y -n grover python=3.6
+conda activate grover
+pip install -r requirements-gpu.txt
+```
+
+## Generate using Grover-Base
+* GPU: 2GB
+
+```
+python download_model.py base
+PYTHONPATH=$(pwd) python sample/contextual_generate.py -model_config_fn lm/configs/base.json -model_ckpt models/base/model.ckpt -metadata_fn sample/april2019_set_mini.jsonl -out_fn april2019_set_mini_out.jsonl
+
+cat april2019_set_mini_out.jsonl
+```
+
+## Generate using Grover-Large
+* GPU that works?
+    * Fails with OOM on 2GB GPU
+* run below
+
+```
+python download_model.py large
+PYTHONPATH=$(pwd) python sample/contextual_generate.py -model_config_fn lm/configs/large.json -model_ckpt models/large/model.ckpt -metadata_fn sample/april2019_set_mini.jsonl -out_fn april2019_set_mini_out_large.jsonl
+
+cat april2019_set_mini_out_large.jsonl
+```
+
+
+## Generate using Grover-Mega
+* GPU that works?
+    * Fails with OOM on 2GB GPU
+* download mega model checkpoint, save to models/mega
+* run below
+
+```
+python download_model.py base
+PYTHONPATH=$(pwd) python sample/contextual_generate.py -model_config_fn lm/configs/mega.json -model_ckpt models/base/model.ckpt-800000 -metadata_fn sample/april2019_set_mini.jsonl -out_fn april2019_set_mini_out_mega.jsonl
+
+cat april2019_set_mini_out_mega.jsonl
+```
+
+
+
+# Original README below:
+
 # Grover
 (aka, code for [Defending Against Neural Fake News](https://arxiv.org/abs/1905.12616))
 

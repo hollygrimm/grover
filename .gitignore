@@ -102,3 +102,9 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+models
+.vscode
+april2019_set_mini_out_mega.jsonl
+april2019_set_mini_out_large.jsonl
+april2019_set_mini_out.jsonl
